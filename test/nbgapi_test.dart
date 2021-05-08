@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:nbgapi/core/currency_codes_enum.dart';
 
 import 'package:nbgapi/nbgapi.dart';
 
 void main() {
-  test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
+  test('gets rate form NBG.GE', () async {
+    final nbgClient = NbgClient();
+    var rate = await nbgClient.getRate(CurrencyCodeEnum.USD);
+    expect(rate.description, '1 აშშ დოლარი');
   });
 }
